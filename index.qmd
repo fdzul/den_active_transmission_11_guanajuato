@@ -1,0 +1,136 @@
+---
+title: "Programa de Prevención & Control del Dengue: 11 Guanajuato| 2024"
+format: 
+  dashboard:
+      scrolling: true
+      logo: https://www.gob.mx/cms/uploads/action_program/main_image/26942/post_post_portadavectores.gif
+      nav-buttons: [twitter,  facebook]
+theme: custom.scss
+---
+
+```{r setup}
+library(sf)
+mapview::mapviewOptions(default = TRUE,
+                        basemaps.color.shuffle = FALSE)
+load("/Users/felipedzul/Library/CloudStorage/OneDrive-Personal/proyects/geocoding_mex/2024/8.RData/denmex_2024.RData")
+```
+
+
+# [**Situación Epidemiológica**]{style="font-size:8pt"}
+
+# [**Escenarios Epidemiológicos**]{style="font-size:8pt"}
+
+::: panel-tabset
+
+### [**León**]{style="color:#990000"}
+
+<html>
+<head>
+```{=html}
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 5px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  font-size: 15px;
+  text-align-last: center;
+  text-align: center;
+}
+</style>
+```
+</head>
+<body>
+<h1>
+</h1>
+<p>
+</p>
+
+::: grid-container
+
+::: grid-item
+Localidad 
+:::
+
+::: grid-item
+Acumulado
+:::
+
+::: grid-item
+Ultimo Mes
+:::
+
+::: grid-item
+Ultimas 2 Semanas
+:::
+
+::: grid-item
+Mapas de Calor
+:::
+
+::: grid-item
+
+:::
+
+::: grid-item
+
+
+:::
+
+::: grid-item
+
+
+:::
+
+::: grid-item
+Cadenas de Transmisión
+:::
+
+
+::: grid-item
+
+
+:::
+
+::: grid-item
+
+
+:::
+
+::: grid-item
+
+
+:::
+
+::: grid-item
+Log-Gaussian-Cox Process
+:::
+
+
+::: grid-item
+
+:::
+
+
+::: grid-item
+
+:::
+
+
+::: grid-item
+
+:::
+
+
+
+:::
+
+</body>
+</html>
+
+:::
