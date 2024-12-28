@@ -4,7 +4,7 @@ format:
   dashboard:
       scrolling: true
       logo: https://www.gob.mx/cms/uploads/action_program/main_image/26942/post_post_portadavectores.gif
-      nav-buttons: [twitter,  facebook]
+      nav-buttons: [twitter, github, facebook]
 theme: custom.scss
 ---
 
@@ -30,7 +30,7 @@ load("/Users/felipedzul/Library/CloudStorage/OneDrive-Personal/proyects/geocodin
 <style>
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto;
   padding: 5px;
 }
 
@@ -54,10 +54,6 @@ load("/Users/felipedzul/Library/CloudStorage/OneDrive-Personal/proyects/geocodin
 ::: grid-container
 
 ::: grid-item
-Localidad 
-:::
-
-::: grid-item
 Acumulado
 :::
 
@@ -69,46 +65,118 @@ Ultimo Mes
 Ultimas 2 Semanas
 :::
 
+
 ::: grid-item
-Mapas de Calor
+```{r leon_acumulado}
+#| echo: false
+#| output: true
+densnv::mp_heatmap(geocoded_datasets = z,
+                   cve_edo = "11",
+                   locality = "Leon de Aldama",
+                   status_caso = c(1, 2),
+                   week = seq(from = 1, 
+                              to = lubridate::epiweek(Sys.Date()),
+                              by = 1),
+                   zoom = NULL,
+                   map_type = NULL,
+                   alpha = 0.6,
+                   static = FALSE,
+                   palette = viridis::turbo)
+```
 :::
 
 ::: grid-item
 
+```{r leon_ultimo_mes}
+#| echo: false
+#| output: true
+densnv::mp_heatmap(geocoded_datasets = z,
+                   cve_edo = "11",
+                   locality = "Leon de Aldama",
+                   status_caso = c(1, 2),
+                   week = seq(from = lubridate::epiweek(Sys.Date())-5, 
+                              to = lubridate::epiweek(Sys.Date()),
+                              by = 1),
+                   zoom = NULL,
+                   map_type = NULL,
+                   alpha = 0.6,
+                   static = FALSE,
+                   palette = viridis::turbo)
+```
 :::
 
 ::: grid-item
 
+```{r leon_ultimas_dos_semanas}
+#| echo: false
+#| output: true
+densnv::mp_heatmap(geocoded_datasets = z,
+                   cve_edo = "11",
+                   locality = "Leon de Aldama",
+                   status_caso = c(1, 2),
+                   week = seq(from = lubridate::epiweek(Sys.Date())-3, 
+                              to = lubridate::epiweek(Sys.Date()),
+                              by = 1),
+                   zoom = NULL,
+                   map_type = NULL,
+                   alpha = 0.6,
+                   static = FALSE,
+                   palette = viridis::turbo)
+
+```
+
+:::
+
+
+::: grid-item
+
+```{r leon_knox_acumulado}
+load("/Users/felipedzul/Library/CloudStorage/OneDrive-Personal/proyects/geocoding_mex/2024/8.RData/denmex_2024.RData")
+
+denhotspots::transmission_chains_map(geocoded_dataset = z,
+                                     cve_edo = "11",
+                                     locality = "León de Aldama",
+                                     dengue_cases = "Confirmado")
+
+
+```
 
 :::
 
 ::: grid-item
 
+```{r leon_knox_ultimo_mes}
+load("/Users/felipedzul/Library/CloudStorage/OneDrive-Personal/proyects/geocoding_mex/2024/8.RData/denmex_2024.RData")
+z <- z |>
+  dplyr::filter(SEM %in% c(seq(from = lubridate::epiweek(Sys.Date())-5, 
+                              to = lubridate::epiweek(Sys.Date()),
+                              by = 1)))
+denhotspots::transmission_chains_map(geocoded_dataset = z,
+                                     cve_edo = "11",
+                                     locality = "León de Aldama",
+                                     dengue_cases = "Confirmado")
+
+
+```
 
 :::
 
 ::: grid-item
-Cadenas de Transmisión
-:::
+
+```{r leon_knox_ultimas_dos semanas}
+load("/Users/felipedzul/Library/CloudStorage/OneDrive-Personal/proyects/geocoding_mex/2024/8.RData/denmex_2024.RData")
+z <- z |>
+  dplyr::filter(SEM %in% c(seq(from = lubridate::epiweek(Sys.Date())-3, 
+                              to = lubridate::epiweek(Sys.Date()),
+                              by = 1)))
+
+denhotspots::transmission_chains_map(geocoded_dataset = z,
+                                     cve_edo = "11",
+                                     locality = "León de Aldama",
+                                     dengue_cases = c("Probable"))
 
 
-::: grid-item
-
-
-:::
-
-::: grid-item
-
-
-:::
-
-::: grid-item
-
-
-:::
-
-::: grid-item
-Log-Gaussian-Cox Process
+```
 :::
 
 
